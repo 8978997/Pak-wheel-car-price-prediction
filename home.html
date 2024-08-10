@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Car Price Prediction</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="note">
+        <p>Note:</p>
+    <p>1. This model predicts the price of a car based on the provided inputs.</p>
+    <p>2. The current accuracy of the model is 88%, with potential for further improvement.</p>
+    <p>3. Example input: KM Driven: 3000, CC: 1800, Engine Type: Petrol, Transmission: Automatic, Car Name: Honda Civic</p>
+    </div>
+    <div class="container">
+        <form action="/predict" method="post">
+            <label for="KM_Driven">KM Driven:</label>
+            <input type="number" id="KM_Driven" name="KM_Driven" required><br>
+            <label for="CC">CC:</label>
+            <input type="number" id="CC" name="CC" required><br>
+            <label for="Model">Model:</label>
+            <input type="number" id="Model" name="Model" required><br>
+            <label for="Engine_type">Engine Type:</label>
+            <input type="text" id="Engine_type" name="Engine_type" required><br>
+            <label for="CarName">Car Name:</label>
+            <input type="text" id="CarName" name="CarName" required><br>
+            <label for="Transmission">Transmission:</label>
+            <input type="text" id="Transmission" name="Transmission" required><br>
+            <button type="submit">Predict</button>
+        </form>
+        {% if prediction %}
+            <h2>Predicted Price: {{ prediction }}</h2>
+        {% endif %}
+    </div>
+</body>
+</html>
